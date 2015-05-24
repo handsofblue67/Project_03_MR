@@ -1,25 +1,20 @@
+#include "Node.hpp"
 
-#include<iostream>
-#include<fstream>
-#include<iostream>
-
-using namespace std;
-
-struct Node
+Node::Node()
 {
-	Node()
-	{
+	data = -1;
+	ahead = nullptr;
+	behind = nullptr;
+}
 
-	}
+Node::Node(Node_entry _data, Node* _ahead, Node* _behind)
+{
+	data = _data;
+	behind = _behind;
+	ahead = _ahead;
+}
 
-	Node(int _data, Node* _next, Node* _previous)
-	{
-		data = _data;
-		next = _next;
-		previous = _previous;
-	}
-	~Node()
-	{
+Node::~Node()
+{
 
-	}
 }

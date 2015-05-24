@@ -1,12 +1,11 @@
 #include "Stack.hpp"
-#include "Node.hpp"
 
-Stack() : top(nullptr)
+Stack::Stack() : top(nullptr)
 {
 
 }
 
-~Stack()
+Stack::~Stack()
 {
 	while (top != nullptr)
 	{
@@ -14,15 +13,14 @@ Stack() : top(nullptr)
 	}
 }
 
-void push(Node* p)
+void Stack::push(int _data)
 {
+	Node* p = new Node(_data, top, nullptr);
 	top->behind = p;
-	p->ahead = top;
 	top = p;
-	p->behind = nullptr;
 }
 
-Node* serve()
+Node* Stack::serve()
 {
 	Node* p = top;
 	p->ahead->behind = nullptr;

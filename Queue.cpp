@@ -1,26 +1,26 @@
 #include "Queue.hpp"
-#include "Node.hpp"
-Queue() : front(nullptr), rear(nullptr)
+
+Queue::Queue() : front(nullptr), rear(nullptr)
 {
 
 }
 
-~Queue()
+Queue::~Queue()
 {
 	while (rear != nullptr)
 	{
-		delete rear->serve();
+		delete serve();
 	}
 }
 
-void append(Node* p)
+void Queue::append(int _data)
 {
-	Node* q = rear;
+	Node* p = new Node(_data, rear, nullptr);
 	p->ahead = rear;
 	rear = p;
 }
 
-Node* serve()
+Node* Queue::serve()
 {
 	Node* p = front;
 	front = front->behind;

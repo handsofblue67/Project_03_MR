@@ -1,16 +1,11 @@
-
-#include<iostream>
-#include<fstream>
-#include<iostream>
-
-using namespace std;
+typedef int node_entry;
 
 struct Node
 {
 	Node();
 	Node(int, Node*, Node*);
 	~Node();
-	int data;
-	Node* next;
-	Node* previous;
+	Node* behind;
+	Node* ahead;
+	node_entry data;
 };
