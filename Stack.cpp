@@ -9,7 +9,7 @@ Stack::~Stack()
 {
 	while (top != nullptr)
 	{
-		delete top();
+		delete pop();
 	}
 }
 
@@ -20,7 +20,7 @@ void Stack::push(int _data)
 	top = p;
 }
 
-Node* Stack::serve()
+Node* Stack::pop()
 {
 	Node* p = top;
 	p->ahead->behind = nullptr;

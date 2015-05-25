@@ -1,3 +1,4 @@
+
 #include "Node.hpp"
 
 Node::Node()
@@ -12,6 +13,7 @@ Node::Node(Node_entry _data, Node* _behind, Node* _ahead)
 	behind = _behind;
 	ahead = _ahead;
 }
+<<<<<<< HEAD
 
 SList::SList()
 {
@@ -28,3 +30,5 @@ SList::~SList()
 
 }
 }
+=======
+>>>>>>> origin/master
