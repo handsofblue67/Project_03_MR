@@ -25,7 +25,7 @@ public:
 	//Purpose:	remove and return one item from the front of the stack
 	//Parameters:	none
 	//Returns:	one pointer to a node object
-	Node* serve();
+	Node* pop();
 
 private:
 	Node* top;

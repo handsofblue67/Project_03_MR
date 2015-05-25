@@ -31,4 +31,3 @@ private:
 	Node* front;
 	Node* rear;
 };
-
