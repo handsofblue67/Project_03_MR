@@ -13,7 +13,7 @@ Stack::~Stack()
 	}
 }
 
-void Stack::push(int _data)
+Error_code Stack::push(int _data)
 {
 	Node* p = new Node(_data, top, nullptr);
 	top->behind = p;
