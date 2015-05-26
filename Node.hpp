@@ -71,7 +71,7 @@ public:
 	~Stack();
 
 	//Name:		push
-	//Purpose:	add an item to the fron the the stack
+	//Purpose:	add an item to the front the the stack
 	//Parameters:	one int
 	//Returns:	none
 	ErrorCode push(const T&);
@@ -145,7 +145,7 @@ ErrorCode Stack<T>::push(const T& _data)
 
 	else
 	{
-		top->ahead = new Node<T>(_data, top, nullptr);
+		top = new Node<T>(_data, top, nullptr);
 		top = top->ahead;
 
 	}
@@ -162,9 +162,15 @@ ErrorCode Stack<T>::pop()
 	}
 
 	ErrorCode outcome = success;
+	if (top->ahead == nullptr)
+	{
+		delete top;
+		top = nullptr;
+		return outcome;
+	}
 	Node<T>* p = top;
-	p->behind->ahead = nullptr;
-	top = p->behind;
+	top = p->ahead;
+	top->behind = nullptr;
 	delete p;
 	return outcome;
 }
@@ -214,7 +220,7 @@ ErrorCode Queue<T>::serve()
 	if (front->behind == nullptr)
 	{
 		delete p;
-		front = nullptr;
+		front = rear = nullptr;
 		return outcome;
 	}
 
