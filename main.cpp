@@ -35,7 +35,6 @@ int main()
 			
 			while (in >> command >> intValue)
 			{
-				//in >> command >> intValue;
 				{
 					if ( command == "push")
 					{
