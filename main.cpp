@@ -2,8 +2,6 @@
 #include<fstream>
 #include<string>
 #include "Node.hpp"
-#include "Queue.hpp"
-#include "Stack.hpp"
 
 using namespace std;
 
@@ -29,43 +27,39 @@ int main()
 		else
 		{
 			
-			Queue* queue = new Queue();
-			Stack* stack = new Stack();
+			Queue<int> queue;
+			Stack<int> stack;
 			int intValue;
 			string command;
 			int num;
 			
-			while (!in.eof())
+			while (in >> command >> intValue)
 			{
-				if (!in >> intValue)
+				//in >> command >> intValue;
 				{
 					if ( command == "push")
 					{
 						in >> intValue;
-						stack->push(intValue);
-						cout << "push\t\tstack\t\tsuccess" << endl;
+						cout << "push\t\tstack\t\t" << intValue << "t\t" << stack.push(intValue) << endl;
 					}
 
 					else if (command == "pop")
 					{
-						num = stack->pop()->data;
-						cout << "pop\t\tstack\t\tsuccess" << endl;
+						num = stack.pop();
+						cout << "pop\t\tstack\t\t---\t\t" << stack.pop() << endl;
 					}
 
 					else if (command == "append")
 					{
 						
 						in >> intValue;
-						queue->append(intValue);
-						cout << "append\t\tqueue\t\tsuccess" << endl;
+						cout << "append\t\tqueue\t\t" << intValue << "\t\t" << queue.append(intValue) << endl;
 					}
 	
 					else if (command == "serve")
 					{
 						
-						num = queue->serve()->data;
-						queue->serve();
-						cout << "serve\t\tqueue\t\tsuccess" << endl;
+						cout << "serve\t\tqueue\t\t---\t\t" << queue.serve() << endl;
 					}
 				}	
 			}
@@ -73,5 +67,6 @@ int main()
 		in.close();
 		cout << "Enter 'y' if you want to enter another file" << endl;
 	}while (answer == "y");
-	return 0;
+		system("pause");
+		return 0;
 }
