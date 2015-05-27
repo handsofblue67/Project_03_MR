@@ -50,15 +50,22 @@ int main()
 
 					else if (command == "append")
 					{
-
 						in >> intValue;
+						
 						cout << "append\t\tqueue\t\t" << intValue << "\t\t" << queue.append(intValue) << endl;
 					}
 
 					else if (command == "serve")
 					{
+						if (queue.getFront() == nullptr)
+						{
+							cout << "serve\t\tqueue\t\t---\t\t" << queue.serve() << endl;
+						}
 
-						cout << "serve\t\tqueue\t\t---\t\t" << queue.serve() << endl;
+						else
+						{
+							cout << "serve\t\tqueue\t\t" << queue.getFront()->data << "\t\t" << queue.serve() << endl;
+						}
 					}
 				}
 			}

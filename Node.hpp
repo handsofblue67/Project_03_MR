@@ -74,7 +74,7 @@ public:
 	//Purpose:	add an item to the front the the stack
 	//Parameters:	one int
 	//Returns:	none
-	ErrorCode push(const T&);
+	ErrorCode push(const T);
 
 	//Name:		pop
 	//Purpose:	remove and return one item from the front of the stack
@@ -102,11 +102,17 @@ public:
 	//Returns:	none
 	~Queue();
 
+	//Name:		getFront
+	//Purpose:	return pointer to the node at the front of the queue
+	//Parameters:	none
+	//Returns:	one node pointer
+	Node<T>* getFront();
+
 	//Name:		serve
 	//Purpose:	create a node and add to the back of the queue object
 	//Parameters:	one int
 	//Returns:	none
-	ErrorCode append(const T&);
+	ErrorCode append(const T);
 
 	//Name:		serve
 	//Purpose:	remove and return one item from the front of the Queue
@@ -135,7 +141,7 @@ Stack<T>::~Stack()
 }
 
 template<typename T>
-ErrorCode Stack<T>::push(const T& _data)
+ErrorCode Stack<T>::push(const T _data)
 {
 	ErrorCode outcome = success;
 	if (top == nullptr)
@@ -189,15 +195,21 @@ Queue<T>::~Queue()
 		serve();
 	}
 }
+template<typename T>
+Node<T>* Queue<T>::getFront()
+{
+	return front;
+}
 
 template<typename T>
-ErrorCode Queue<T>::append(const T& _data)
+ErrorCode Queue<T>::append(const T _data)
 {
 	ErrorCode outcome = success;
-	if (rear == nullptr)
+	if (front == nullptr)
 	{
 		front = rear = new Node<T>(_data, nullptr, nullptr);
 	}
+	
 	else
 	{
 		rear->behind = new Node<T>(_data, rear, nullptr);
