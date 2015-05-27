@@ -10,6 +10,10 @@
 //I understand that copying any source code, in whole or in part, constitutes cheating,
 //and that I will receive a zero on this project if I am found in violation of this policy.
 //typedef int Node_entry;
+#include<string>
+#include<sstream>
+using namespace std;
+template<typename T>
 
 enum ErrorCode{success, underflow};
 
@@ -81,7 +85,12 @@ public:
 	//Parameters:	none
 	//Returns:	one pointer to a node object
 	ErrorCode pop();
-
+	
+	//Name:		print
+	//Purpose:	return a string that contains the current data stored on the stack
+	//Parameters:	none
+	//Returns:	one (long) string
+	string print();
 private:
 	Node<T>* top;
 };
@@ -119,6 +128,12 @@ public:
 	//Parameters:	none
 	//Returns:	one pointer to a node object
 	ErrorCode serve();
+	
+	//Name:		print
+	//Purpose:	return a string that contains the current data stored on the stack
+	//Parameters:	none
+	//Returns:	one (long) string
+	string print();
 
 private:
 	Node<T>* front;
@@ -182,6 +197,21 @@ ErrorCode Stack<T>::pop()
 }
 
 template<typename T>
+string Queue<T>::print()
+{
+	ostringstream oss;
+	Node<T>* p = rear;
+	
+	while (p != nullptr)
+	{
+		oss << p->data << endl;
+		p = p->ahead;
+	}
+	
+	return oss.str();
+	
+}
+
 Queue<T>::Queue() : front(nullptr), rear(nullptr)
 {
 
@@ -242,3 +272,18 @@ ErrorCode Queue<T>::serve()
 	return outcome;
 }
 
+template<typename T>
+string Queue<T>::print()
+{
+	ostringstream oss;
+	Node<T>* p = rear;
+	
+	while (p != nullptr)
+	{
+		oss << p->data << endl;
+		p = p->ahead;
+	}
+	
+	return oss.str();
+	
+}

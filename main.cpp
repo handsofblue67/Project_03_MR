@@ -33,9 +33,8 @@ int main()
 			while (!in.eof())
 			{
 				
-			Queue<int> queue;
-			Stack<int> stack;
-				{
+					Queue<int> queue;
+					Stack<int> stack;
 					in >> command;
 					if (command == "push")
 					{
@@ -67,6 +66,8 @@ int main()
 							cout << "serve\t\tqueue\t\t" << queue.getFront()->data << "\t\t" << queue.serve() << endl;
 						}
 					}
+
+					cout << queue.print() << stack.print();
 				}
 			}
 
