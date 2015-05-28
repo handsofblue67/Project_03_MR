@@ -1,3 +1,15 @@
+// Author:			Michael Robison
+// Assignment:		3
+// File:			main.cpp
+// Instructor:		
+// Class:			CS 2420
+// Date Written:	5/28/2015
+// Description:		driver for node containing queue and stack	
+
+//I declare that the following source code was written only by me.
+//I understand that copying any source code, in whole or in part, constitutes cheating,
+//and that I will receive a zero on this project if I am found in violation of this policy.
+
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -64,7 +76,8 @@ int main()
 
 						else
 						{
-							cout << "serve\t\tqueue\t\t" <</* queue.getFront()->data << */"\t\t" << queue.serve() << endl;
+							cout << "serve\t\tqueue\t\t" << queue.getFront()->data;
+							cout << "\t\t" << queue.serve() << endl;
 						}
 					}
 

@@ -1,15 +1,15 @@
 // Author:			Michael Robison
-// Assignment:		2
-// File:			Node.hpp
+// Assignment:		3
+// File:			Node.h
 // Instructor:		
 // Class:			CS 2420
-// Date Written:	5/18/2015
-// Description:		Node struct, single and double linked class definition
+// Date Written:	5/28/2015
+// Description:		Node struct and function definitions
 
 //I declare that the following source code was written only by me.
 //I understand that copying any source code, in whole or in part, constitutes cheating,
 //and that I will receive a zero on this project if I am found in violation of this policy.
-//typedef int Node_entry;
+
 #ifndef NODE_H
 #define NODE_H
 #include<string>
@@ -42,7 +42,7 @@ struct Node
 	// Post-conditions:	none
 	Node(T, Node*, Node*);
 };
-#endif
+
 
 
 template<typename T>
@@ -59,3 +59,5 @@ Node<T>::Node(T _data, Node* _ahead, Node* _behind)
 	behind = _behind;
 	ahead = _ahead;
 }
+
+#endif

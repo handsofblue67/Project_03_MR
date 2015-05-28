@@ -1,3 +1,15 @@
+// Author:			Michael Robison
+// Assignment:		3
+// File:			Stack.h
+// Instructor:		
+// Class:			CS 2420
+// Date Written:	5/28/2015
+// Description:		Stack class and function definitions
+
+//I declare that the following source code was written only by me.
+//I understand that copying any source code, in whole or in part, constitutes cheating,
+//and that I will receive a zero on this project if I am found in violation of this policy.
+
 #ifndef STACK_H
 #define STACK_H
 #include "Node.h"
