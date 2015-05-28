@@ -1,8 +1,9 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include "Node.hpp"
-
+#include "Node.h"
+#include "Queue.h"
+#include "Stack.h"
 using namespace std;
 
 int main()
@@ -29,12 +30,12 @@ int main()
 
 		else
 		{
+			Queue<int> queue;
+			Stack<int> stack;
 	
 			while (!in.eof())
 			{
 				
-					Queue<int> queue;
-					Stack<int> stack;
 					in >> command;
 					if (command == "push")
 					{
@@ -63,15 +64,14 @@ int main()
 
 						else
 						{
-							cout << "serve\t\tqueue\t\t" << queue.getFront()->data << "\t\t" << queue.serve() << endl;
+							cout << "serve\t\tqueue\t\t" <</* queue.getFront()->data << */"\t\t" << queue.serve() << endl;
 						}
 					}
 
-					cout << queue.print() << stack.print();
 				}
-			}
 
 			in.close();
+			cout << "\nQueue Contents\n" << queue.print() << "\n\nStack Contents\n" << stack.print();
 			cout << "Enter 'y' if you want to enter another file" << endl;
 			cin >> answer;
 		}	
