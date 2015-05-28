@@ -18,16 +18,16 @@ template<typename T>
 class Queue
 {
 public:
-	//Name:		Queue constructor
-	//Purpose:	create queue objects
+	//Name:			Queue constructor
+	//Purpose:		create queue objects
 	//Parameters:	none
-	//Returns:	none
+	//Returns:		none
 	Queue();
 
-	//Name:		Queue destructor
-	//Purpose:	delete nodes in the queue and return the memory back to the heap
+	//Name:			Queue destructor
+	//Purpose:		delete nodes in the queue and return the memory back to the heap
 	//Parameters:	none
-	//Returns:	none
+	//Returns:		none
 	~Queue();
 
 	//Name:		getFront
@@ -73,6 +73,7 @@ Queue<T>::~Queue()
 		serve();
 	}
 }
+
 template<typename T>
 Node<T>* Queue<T>::getFront()
 {
@@ -99,23 +100,27 @@ ErrorCode Queue<T>::append(const T _data)
 template<typename T>
 ErrorCode Queue<T>::serve()
 {
+	ErrorCode outcome = success;
 	if (front == nullptr)
 	{
 		ErrorCode outcome = underflow;
+
 	}
 
-	ErrorCode outcome = success;
 	Node<T>* p = front;
 	if (front->behind == nullptr)
 	{
 		delete p;
 		front = rear = nullptr;
+	
 	}
+
 	else
 	{
 		front = front->behind;
 		front->ahead = nullptr;
 		delete p;
+
 	}
 	
 	return outcome;

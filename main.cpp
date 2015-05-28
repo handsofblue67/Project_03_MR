@@ -45,10 +45,9 @@ int main()
 			Queue<int> queue;
 			Stack<int> stack;
 	
-			while (!in.eof())
+			while (in >> command)
 			{
 				
-					in >> command;
 					if (command == "push")
 					{
 						in >> intValue;
@@ -57,7 +56,16 @@ int main()
 
 					else if (command == "pop")
 					{
-						cout << "pop\t\tstack\t\t---\t\t" << stack.pop() << endl;
+						if (stack.getTop() == nullptr)
+						{
+							cout << "pop\t\tstack\t\t---\t\t" << stack.pop() << endl;
+						}
+						
+						else
+						{
+							cout << "pop\t\tstack\t\t" << stack.getTop()->data;
+							cout << "\t\t" << stack.pop() << endl;
+						}
 					}
 
 					else if (command == "append")
@@ -84,7 +92,8 @@ int main()
 				}
 
 			in.close();
-			cout << "\nQueue Contents\n" << queue.print() << "\n\nStack Contents\n" << stack.print();
+			cout << "\nQueue Contents\n" << queue.print();
+			cout << "\n\nStack Contents\n" << stack.print() << endl;
 			cout << "Enter 'y' if you want to enter another file" << endl;
 			cin >> answer;
 		}	

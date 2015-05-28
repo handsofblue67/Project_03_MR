@@ -28,6 +28,12 @@ public:
 	//Parameters:	none
 	//Returns:	none
 	~Stack();
+	
+	//Name:			getTop()
+	//Purpose:		return node at top of stack
+	//Parameters:	None
+	//Returns:		one node pointer
+	Node<T>* Stack<T>::getTop();
 
 	//Name:		push
 	//Purpose:	add an item to the front the the stack
@@ -50,6 +56,11 @@ private:
 	Node<T>* top;
 }; 
 
+template<typename T>
+Node<T>* Stack<T>::getTop()
+{
+	return top;
+}
 
 template<typename T>
 Stack<T>::Stack() : top(nullptr)
@@ -77,8 +88,8 @@ ErrorCode Stack<T>::push(const T _data)
 
 	else
 	{
-		top = new Node<T>(_data, top, nullptr);
-		top = top->ahead;
+		Node<T>* p = new Node<T>(_data, top, nullptr);
+		top = p;
 
 	}
 	return outcome;
@@ -87,24 +98,28 @@ ErrorCode Stack<T>::push(const T _data)
 template<typename T>
 ErrorCode Stack<T>::pop()
 {
+	ErrorCode outcome = success;
 	if (top == nullptr)
 	{
 		ErrorCode outcome = underflow;
-		return outcome;
-	}
 
-	ErrorCode outcome = success;
-	if (top->ahead == nullptr)
-	{
-		delete top;
-		top = nullptr;
-		return outcome;
 	}
 
 	Node<T>* p = top;
-	top = p->ahead;
-	top->behind = nullptr;
-	delete p;
+	if (top->ahead == nullptr)
+	{
+		delete p;
+		top = nullptr;
+
+	}
+
+	else
+	{
+		top = top->ahead;
+		delete p;
+
+	}
+	
 	return outcome;
 }
 
