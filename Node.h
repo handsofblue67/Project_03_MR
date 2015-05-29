@@ -16,7 +16,7 @@
 #include<sstream>
 using namespace std;
 
-enum ErrorCode{success, underflow};
+//enum ErrorCode{success, underflow};
 
 template<typename T>
 struct Node

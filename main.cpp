@@ -1,6 +1,6 @@
 // Author:			Michael Robison
 // Assignment:		3
-// File:			main.cpp
+// File:		main.cpp
 // Instructor:		
 // Class:			CS 2420
 // Date Written:	5/28/2015
@@ -44,27 +44,28 @@ int main()
 		{
 			Queue<int> queue;
 			Stack<int> stack;
-	
+			cout << "____________________________________________________________\n";
+			cout << "|Operation\t|Structure\t|Contents\t|Return Code|\n\n";
 			while (in >> command)
 			{
 				
 					if (command == "push")
 					{
 						in >> intValue;
-						cout << "push\t\tstack\t\t" << intValue << "\t\t" << stack.push(intValue) << endl;
+						cout << "|push\t\t|stack\t\t|" << intValue << "\t\t|" << stack.push(intValue) << "|" << endl;
 					}
 
 					else if (command == "pop")
 					{
 						if (stack.getTop() == nullptr)
 						{
-							cout << "pop\t\tstack\t\t---\t\t" << stack.pop() << endl;
+							cout << "|pop\t\t|stack\t\t|---\t\t|" << stack.pop() << "|"<< endl;
 						}
 						
 						else
 						{
-							cout << "pop\t\tstack\t\t" << stack.getTop()->data;
-							cout << "\t\t" << stack.pop() << endl;
+							cout << "|pop\t\t|stack\t\t|" << stack.getTop()->data;
+							cout << "\t\t|" << stack.pop() << "|" << endl;
 						}
 					}
 
@@ -72,20 +73,20 @@ int main()
 					{
 						in >> intValue;
 						
-						cout << "append\t\tqueue\t\t" << intValue << "\t\t" << queue.append(intValue) << endl;
+						cout << "|append\t\t|queue\t\t|" << intValue << "\t\t|" << queue.append(intValue) << "|" << endl;
 					}
 
 					else if (command == "serve")
 					{
 						if (queue.getFront() == nullptr)
 						{
-							cout << "serve\t\tqueue\t\t---\t\t" << queue.serve() << endl;
+							cout << "|serve\t\t|queue\t\t|---\t\t|" << queue.serve() << "|" << endl;
 						}
 
 						else
 						{
-							cout << "serve\t\tqueue\t\t" << queue.getFront()->data;
-							cout << "\t\t" << queue.serve() << endl;
+							cout << "|serve\t\t|queue\t\t|" << queue.getFront()->data;
+							cout << "\t\t|" << queue.serve() << "|" << endl;
 						}
 					}
 

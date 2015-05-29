@@ -1,8 +1,8 @@
-// Author:			Michael Robison
+// Author:		Michael Robison
 // Assignment:		3
-// File:			Stack.h
+// File:		Stack.h
 // Instructor:		
-// Class:			CS 2420
+// Class:		CS 2420
 // Date Written:	5/28/2015
 // Description:		Stack class and function definitions
 
@@ -33,19 +33,19 @@ public:
 	//Purpose:		return node at top of stack
 	//Parameters:	None
 	//Returns:		one node pointer
-	Node<T>* Stack<T>::getTop();
+	Node<T>* getTop();
 
 	//Name:		push
 	//Purpose:	add an item to the front the the stack
 	//Parameters:	one int
 	//Returns:	none
-	ErrorCode push(const T);
+	string push(const T);
 
 	//Name:		pop
 	//Purpose:	remove and return one item from the front of the stack
 	//Parameters:	none
 	//Returns:	one pointer to a node object
-	ErrorCode pop();
+	string pop();
 
 	//Name:		print
 	//Purpose:	return a string that contains the current data stored on the stack
@@ -78,9 +78,9 @@ Stack<T>::~Stack()
 }
 
 template<typename T>
-ErrorCode Stack<T>::push(const T _data)
+string Stack<T>::push(const T _data)
 {
-	ErrorCode outcome = success;
+	string outcome = "success";
 	if (top == nullptr)
 	{
 		top = new Node<T>(_data, nullptr, nullptr);
@@ -96,17 +96,17 @@ ErrorCode Stack<T>::push(const T _data)
 }
 
 template<typename T>
-ErrorCode Stack<T>::pop()
+string Stack<T>::pop()
 {
-	ErrorCode outcome = success;
+	string outcome = "success";
+	Node<T>* p = top;
 	if (top == nullptr)
 	{
-		ErrorCode outcome = underflow;
+		outcome = "underflow";
 
 	}
 
-	Node<T>* p = top;
-	if (top->ahead == nullptr)
+	else if (top->ahead == nullptr)
 	{
 		delete p;
 		top = nullptr;

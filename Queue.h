@@ -38,15 +38,15 @@ public:
 
 	//Name:		serve
 	//Purpose:	create a node and add to the back of the queue object
-	//Parameters:	one int
-	//Returns:	none
-	ErrorCode append(const T);
+	//Parameters:	one piece of data (templatized)
+	//Returns:	one string for error code
+	string append(const T);
 
 	//Name:		serve
-	//Purpose:	remove and return one item from the front of the Queue
+	//Purpose:	remove one item from the front of the queue
 	//Parameters:	none
-	//Returns:	one pointer to a node object
-	ErrorCode serve();
+	//Returns:	one string for error code
+	string serve();
 
 	//Name:		print
 	//Purpose:	return a string that contains the current data stored on the stack
@@ -81,9 +81,9 @@ Node<T>* Queue<T>::getFront()
 }
 
 template<typename T>
-ErrorCode Queue<T>::append(const T _data)
+string Queue<T>::append(const T _data)
 {
-	ErrorCode outcome = success;
+	string outcome = "success";
 	if (front == nullptr)
 	{
 		front = rear = new Node<T>(_data, nullptr, nullptr);
@@ -98,17 +98,17 @@ ErrorCode Queue<T>::append(const T _data)
 }
 
 template<typename T>
-ErrorCode Queue<T>::serve()
+string Queue<T>::serve()
 {
-	ErrorCode outcome = success;
+	string outcome = "success";
+	Node<T>* p = front;
 	if (front == nullptr)
 	{
-		ErrorCode outcome = underflow;
+		outcome = "underflow";
 
 	}
 
-	Node<T>* p = front;
-	if (front->behind == nullptr)
+	else if (front->behind == nullptr)
 	{
 		delete p;
 		front = rear = nullptr;
