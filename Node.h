@@ -3,7 +3,7 @@
 // File:			Node.h
 // Instructor:		
 // Class:			CS 2420
-// Date Written:	5/28/2015
+// Date Written:	5/29/2015
 // Description:		Node struct and function definitions
 
 //I declare that the following source code was written only by me.
@@ -16,27 +16,26 @@
 #include<sstream>
 using namespace std;
 
-//enum ErrorCode{success, underflow};
-
+//node struct definition
 template<typename T>
 struct Node
 {
 	//data members 
 	T data;
-	Node* behind;
-	Node* ahead; //(only used by double linked list.
+	Node* behind; //specifies a node that is younger
+	Node* ahead; //specifies a node that has existed in the data structure longer (stack: node ahead, is below. queue: node ahead is closer to front)
 
-	// Function Name:	SNode default constructor
-	// Purpose:			constructs default double-list node objects
+	// Function Name:	Node default constructor
+	// Purpose:			constructs default node objects
 	// Parameters:		none
 	// Returns:			none
 	// Pre-conditions:	none
 	// Post-conditions:	none
 	Node();
 
-	// Function Name:	SNode parameterized constructor
-	// Purpose:			constructs parameterized double-list node objects
-	// Parameters:		one int
+	// Function Name:	Node parameterized constructor
+	// Purpose:			constructs parameterized node objects
+	// Parameters:		one item to be stored, and two node pointers
 	// Returns:			none
 	// Pre-conditions:	none
 	// Post-conditions:	none
@@ -44,7 +43,7 @@ struct Node
 };
 
 
-
+//node struct function definitions
 template<typename T>
 Node<T>::Node()
 {

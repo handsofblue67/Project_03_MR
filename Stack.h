@@ -3,7 +3,7 @@
 // File:		Stack.h
 // Instructor:		
 // Class:		CS 2420
-// Date Written:	5/28/2015
+// Date Written:	5/29/2015
 // Description:		Stack class and function definitions
 
 //I declare that the following source code was written only by me.
@@ -13,20 +13,22 @@
 #ifndef STACK_H
 #define STACK_H
 #include "Node.h"
+
+//stack class definition
 template<typename T>
 class Stack
 {
 public:
-	//Name:		Stack constructor
-	//Purpose:	create Stack objects
+	//Name:			Stack constructor
+	//Purpose:		create Stack objects
 	//Parameters:	none
-	//Returns:	none
+	//Returns:		none
 	Stack();
 
-	//Name:		Stack destructor
-	//Purpose:	delete each item in stack and return memory to heap
+	//Name:			Stack destructor
+	//Purpose:		delete each item in stack and return memory to heap
 	//Parameters:	none
-	//Returns:	none
+	//Returns:		none
 	~Stack();
 	
 	//Name:			getTop()
@@ -35,33 +37,28 @@ public:
 	//Returns:		one node pointer
 	Node<T>* getTop();
 
-	//Name:		push
-	//Purpose:	add an item to the front the the stack
-	//Parameters:	one int
-	//Returns:	none
+	//Name:			push
+	//Purpose:		add an item to the front the the stack
+	//Parameters:	one item
+	//Returns:		none
 	string push(const T);
 
-	//Name:		pop
-	//Purpose:	remove and return one item from the front of the stack
+	//Name:			pop
+	//Purpose:		remove and return one item from the front of the stack
 	//Parameters:	none
-	//Returns:	one pointer to a node object
+	//Returns:		one string representing return code of operation
 	string pop();
 
-	//Name:		print
-	//Purpose:	return a string that contains the current data stored on the stack
+	//Name:			print
+	//Purpose:		return a string that contains the current data stored on the stack
 	//Parameters:	none
-	//Returns:	one (long) string
+	//Returns:		one (long, and formatted) string
 	string print();
 private:
 	Node<T>* top;
 }; 
 
-template<typename T>
-Node<T>* Stack<T>::getTop()
-{
-	return top;
-}
-
+//stack class function definitions
 template<typename T>
 Stack<T>::Stack() : top(nullptr)
 {
@@ -78,15 +75,21 @@ Stack<T>::~Stack()
 }
 
 template<typename T>
+Node<T>* Stack<T>::getTop()
+{
+	return top;
+}
+
+template<typename T>
 string Stack<T>::push(const T _data)
 {
 	string outcome = "success";
-	if (top == nullptr)
+	if (top == nullptr) //if stack is empty, parameter into a new node and place at top
 	{
 		top = new Node<T>(_data, nullptr, nullptr);
 	}
 
-	else
+	else //otherwise place at top point it to the item below
 	{
 		Node<T>* p = new Node<T>(_data, top, nullptr);
 		top = p;
@@ -100,13 +103,13 @@ string Stack<T>::pop()
 {
 	string outcome = "success";
 	Node<T>* p = top;
-	if (top == nullptr)
+	if (top == nullptr) //if stack is empty, underflow
 	{
 		outcome = "underflow";
 
 	}
 
-	else if (top->ahead == nullptr)
+	else if (top->ahead == nullptr) //if only one item is stack
 	{
 		delete p;
 		top = nullptr;
@@ -115,7 +118,7 @@ string Stack<T>::pop()
 
 	else
 	{
-		top = top->ahead;
+		top = top->ahead; //otherwise, delete top, and set the one below it top
 		delete p;
 
 	}

@@ -3,7 +3,7 @@
 // File:			Queue.h
 // Instructor:		
 // Class:			CS 2420
-// Date Written:	5/28/2015
+// Date Written:	5/29/2015
 // Description:		Queue class and function definitions
 
 //I declare that the following source code was written only by me.
@@ -14,6 +14,7 @@
 #define QUEUE_H
 #include "Node.h"
 
+//queue class defintion
 template<typename T>
 class Queue
 {
@@ -30,28 +31,28 @@ public:
 	//Returns:		none
 	~Queue();
 
-	//Name:		getFront
-	//Purpose:	return pointer to the node at the front of the queue
+	//Name:			getFront
+	//Purpose:		return pointer to the node at the front of the queue
 	//Parameters:	none
-	//Returns:	one node pointer
+	//Returns:		one node pointer
 	Node<T>* getFront();
 
-	//Name:		serve
-	//Purpose:	create a node and add to the back of the queue object
+	//Name:			append
+	//Purpose:		create a node and add to the back of the queue
 	//Parameters:	one piece of data (templatized)
-	//Returns:	one string for error code
+	//Returns:		one string for error code
 	string append(const T);
 
-	//Name:		serve
-	//Purpose:	remove one item from the front of the queue
+	//Name:			serve
+	//Purpose:		remove one item from the front of the queue
 	//Parameters:	none
-	//Returns:	one string for error code
+	//Returns:		one string for error code
 	string serve();
 
-	//Name:		print
-	//Purpose:	return a string that contains the current data stored on the stack
+	//Name:			print
+	//Purpose:		return a string that contains the current data stored on the stack
 	//Parameters:	none
-	//Returns:	one (long) string
+	//Returns:		one (long, and formatted) string
 	string print();
 
 private:
@@ -84,12 +85,12 @@ template<typename T>
 string Queue<T>::append(const T _data)
 {
 	string outcome = "success";
-	if (front == nullptr)
+	if (front == nullptr) //if queue is empty
 	{
 		front = rear = new Node<T>(_data, nullptr, nullptr);
 	}
 
-	else
+	else //if queue has at least one item
 	{
 		rear->behind = new Node<T>(_data, rear, nullptr);
 		rear = rear->behind;
@@ -102,20 +103,20 @@ string Queue<T>::serve()
 {
 	string outcome = "success";
 	Node<T>* p = front;
-	if (front == nullptr)
+	if (front == nullptr) //if queue is empty, underflow
 	{
 		outcome = "underflow";
 
 	}
 
-	else if (front->behind == nullptr)
+	else if (front->behind == nullptr) //if only one item in queue
 	{
 		delete p;
 		front = rear = nullptr;
 	
 	}
 
-	else
+	else //if two of more items in queue
 	{
 		front = front->behind;
 		front->ahead = nullptr;
